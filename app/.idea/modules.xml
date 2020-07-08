@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1182467481/Chapter-2.iml" filepath="$PROJECT_DIR$/.idea/modules/1182467481/Chapter-2.iml" group="Chapter-2" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app.iml" group="Chapter-2/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1587858470/homework.iml" filepath="$PROJECT_DIR$/.idea/modules/1587858470/homework.iml" group="Chapter-2/homework" />
+    </modules>
+  </component>
+</project>

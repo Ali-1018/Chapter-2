@@ -3,6 +3,9 @@ package chapter.android.aweme.ss.com.homework;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 /**
  * 作业1：
@@ -14,10 +17,95 @@ import android.support.v7.app.AppCompatActivity;
  */
 public class Exercises1 extends AppCompatActivity {
 
+    private static final String TAG = "xu";
+
+    private static final String ON_CREATE = "onCreate";
+    private static final String ON_START = "onStart";
+    private static final String ON_RESUME = "onResume";
+    private static final String ON_PAUSE = "onPause";
+    private static final String ON_STOP = "onStop";
+    private static final String ON_RESTART = "onRestart";
+    private static final String ON_DESTROY = "onDestroy";
+
+
+    private static final String ON_SAVE_INSTANCE_STATE = "onSaveInstanceState";
+    private static final String ON_RESTORE_INSTANCE_STATE = "onRestoreInstanceState";
+    private static final String LIFECYCLE_CALLBACKS_TEXT_KEY = "callbacks";
+
+    private TextView mLifecycleDisplay;
+    private TextView mLogCatDisplay;
+
+    private static String log = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_test);
+        mLifecycleDisplay = findViewById(R.id.tv_loglifecycle2);
+        mLogCatDisplay = findViewById(R.id.logcatdisplay);
+        if (savedInstanceState != null) {
+            if (savedInstanceState.containsKey(LIFECYCLE_CALLBACKS_TEXT_KEY)) {
+                String savedContent = (String) savedInstanceState.get(LIFECYCLE_CALLBACKS_TEXT_KEY);
+                mLifecycleDisplay.setText(savedContent);
+            }
+        }
+        logAndAppend(ON_CREATE);
+        setLogcatText(ON_CREATE);
+    }
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        logAndAppend(ON_RESTART);
+        setLogcatText(ON_RESTART);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        logAndAppend(ON_START);
+        setLogcatText(ON_START);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        logAndAppend(ON_RESUME);
+        setLogcatText(ON_RESUME);
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        logAndAppend(ON_PAUSE);
+        setLogcatText(ON_PAUSE);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        logAndAppend(ON_STOP);
+        setLogcatText(ON_STOP);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        logAndAppend(ON_DESTROY);
+        setLogcatText(ON_DESTROY);
+
+    }
+
+    private void logAndAppend(String lifecycleEvent) {
+        Log.d(TAG, "Lifecycle Event: " + lifecycleEvent);
+        mLifecycleDisplay.append(lifecycleEvent + "\n");
+    }
+
+    private void setLogcatText(String lifecycleEvent){
+        log += lifecycleEvent + '\n';
+        mLogCatDisplay.setText(log);
     }
 
 }
